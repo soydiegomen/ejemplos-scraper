@@ -7,3 +7,6 @@ $ scrapy crawl writefile
 
 - Sigue los links de una page que esta paginada  
 $ scrapy crawl quotes
+
+- Sigue los links de una page que esta paginada  
+$ scrapy crawl author

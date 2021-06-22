@@ -15,7 +15,5 @@ class QuotesSpider(scrapy.Spider):
                 'tags': quote.css('div.tags a.tag::text').getall(),
             }
 
-        next_page = response.css('li.next a::attr(href)').get()
-        if next_page is not None:
-            next_page = response.urljoin(next_page)
-            yield scrapy.Request(next_page, callback=self.parse)
+        pagination_links = response.css('li.next a')
+        yield from response.follow_all(pagination_links, self.parse)
